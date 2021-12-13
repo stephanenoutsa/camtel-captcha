@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from captcha.image import ImageCaptcha
+# from captcha.image import ImageCaptcha
 from dotenv import load_dotenv
 from fastai.vision import *
 from flask import Flask
@@ -106,31 +106,31 @@ class CaptchaClassifier(Resource):
         
         return 'Captcha images classified'
     
-class CaptchaGenerator(Resource):
-    def get(self):
-        base_path = CAPTCHAS_DIR + 'generated/'
-        image = ImageCaptcha()
+# class CaptchaGenerator(Resource):
+#     def get(self):
+#         base_path = CAPTCHAS_DIR + 'generated/'
+#         image = ImageCaptcha()
         
-        start_label = 1111
-        end_label = 10000
+#         start_label = 1111
+#         end_label = 10000
         
-        for i in range(start_label, end_label):
-            label = str(i)
-            print(base_path + label)
+#         for i in range(start_label, end_label):
+#             label = str(i)
+#             print(base_path + label)
             
-            if '0' not in label:
-                image.generate(label)
-                image.write(label, base_path + label + '.png')
+#             if '0' not in label:
+#                 image.generate(label)
+#                 image.write(label, base_path + label + '.png')
                 
-                # dest_path = base_path + label
-                # dest = Path(dest_path)
-                # dest.mkdir(exist_ok=True)
+#                 # dest_path = base_path + label
+#                 # dest = Path(dest_path)
+#                 # dest.mkdir(exist_ok=True)
                 
-                # for j in range(1000):
-                #     image.generate(label)
-                #     image.write(label, dest_path + '/' + str(j+1) + '.png')
+#                 # for j in range(1000):
+#                 #     image.generate(label)
+#                 #     image.write(label, dest_path + '/' + str(j+1) + '.png')
         
-        return 'Captcha images generated'
+#         return 'Captcha images generated'
 
 class CaptchaPredictor(Resource):
     def post(self):
@@ -157,7 +157,7 @@ class CaptchaPredictor(Resource):
 api.add_resource(CaptchaReader, '/fetch')
 api.add_resource(CaptchaLabeler, '/label')
 api.add_resource(CaptchaClassifier, '/classify')
-api.add_resource(CaptchaGenerator, '/generate')
+# api.add_resource(CaptchaGenerator, '/generate')
 api.add_resource(CaptchaPredictor, '/predict')
 
 def load_model():
