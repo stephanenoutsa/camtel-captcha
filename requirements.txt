@@ -1,0 +1,8 @@
+beautifulsoup4==4.10.0
+fastai==1.0.61
+flask==2.0.2
+flask-restful==0.3.9
+jupyterlab==3.2.4
+jupyterlab_pygments==0.1.2
+jupyterlab_server==2.8.2
+python-dotenv==0.19.2
