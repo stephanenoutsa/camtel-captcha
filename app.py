@@ -163,7 +163,7 @@ api.add_resource(CaptchaPredictor, '/predict')
 def load_model():
     # defaults.device = torch.device('cpu')
         
-    base_path = 'captchas/test/'
+    base_path = '/var/www/html/camtel-captcha/captchas/test/'
     bs = 64
     
     alist = os.listdir(base_path)
