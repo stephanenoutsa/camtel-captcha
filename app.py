@@ -161,7 +161,7 @@ api.add_resource(CaptchaClassifier, '/classify')
 api.add_resource(CaptchaPredictor, '/predict')
 
 def load_model():
-    defaults.device = torch.device('cpu')
+    # defaults.device = torch.device('cpu')
         
     base_path = './captchas/test/'
     bs = 64
