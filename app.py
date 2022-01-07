@@ -163,28 +163,15 @@ api.add_resource(CaptchaPredictor, '/predict')
 def load_model():
     # defaults.device = torch.device('cpu')
         
-    base_path = '/var/www/html/camtel-captcha/captchas/test/'
-    bs = 64
-    
-    alist = os.listdir(base_path)
-
-    for i in range(len(alist)):
-        alist[i] = [alist[i]]
-        
-        for j in range(4):
-            alist[i].append(alist[i][0][j])
-
-    df = pd.DataFrame(alist)
+    base_path = '/var/www/html/camtel-captcha/captchas/test/models'
     
     learn_list = []
         
     for i in range(4):
-        data = ImageDataBunch.from_df(base_path, df, folder='', size=(77, 247), bs=bs, seed=43, label_col=i+1)
-        
-        learn = cnn_learner(data, models.resnet50, metrics=accuracy, ps=0.1, pretrained=False)
-        learn.load('stage-indi-pos-' + str(i+1))
-        
-        learn_list.append(learn)
+        file = 'stage-indi-pos-' + str(i+1) + '.pkl'
+
+        learner = load_learner(base_path, file)
+        learn_list.append(learner)
     
     return learn_list
 
