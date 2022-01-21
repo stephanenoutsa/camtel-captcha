@@ -3,3 +3,6 @@ __pycache__
 .env
 captchas/test/models
 logs/
+.DS_Store
+captchas/.DS_Store
+captchas/test/.DS_Store
